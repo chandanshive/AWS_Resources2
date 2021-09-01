@@ -35,6 +35,10 @@ resource "aws_s3_bucket" "accuricsbucketdemo" {
       }
     }
   }
+
+  logging {
+    target_bucket = "<target_bucket_name>"
+  }
 }
 
 resource "aws_vpc" "<resource_name>" {
