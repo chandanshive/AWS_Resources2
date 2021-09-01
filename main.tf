@@ -23,6 +23,10 @@ resource "aws_s3_bucket" "accuricsbucketdemo" {
   tags = {
     Name = "bucketdemo"
   }
+
+  versioning {
+    enabled = true
+  }
 }
 
 resource "aws_vpc" "<resource_name>" {
