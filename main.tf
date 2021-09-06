@@ -25,3 +25,11 @@ resource "aws_s3_bucket" "accuricsbucketdemo" {
     Name = "bucketdemo"
   }
 }
+
+resource "aws_vpc" "<resource_name>" {
+  cidr_block = "<cidr>"
+
+  tags = {
+    Name = "main"
+  }
+}
