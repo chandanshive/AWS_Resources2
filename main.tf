@@ -33,3 +33,28 @@ resource "aws_vpc" "<resource_name>" {
     Name = "main"
   }
 }
+resource "aws_s3_bucket_policy" "accuricsbucketdemoPolicy" {
+  bucket = "${aws_s3_bucket.accuricsbucketdemo.id}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "accuricsbucketdemo-restrict-access-to-users-or-roles",
+      "Effect": "Allow",
+      "Principal": [
+        {
+          "AWS": [
+            "arn:aws:iam::##acount_id##:role/##role_name##",
+            "arn:aws:iam::##acount_id##:user/##user_name##"
+          ]
+        }
+      ],
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.accuricsbucketdemo.id}/*"
+    }
+  ]
+}
+POLICY
+}
