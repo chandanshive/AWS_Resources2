@@ -7,15 +7,20 @@ resource "aws_instance" "webserver" {
   ami           = "ami-01e36b7901e884a10"
   instance_type = "t2.micro"
 
-  tags          = {
+  tags = {
     Name = "webserver"
+  }
+
+  metadata_options {
+    http_endpoint = "disabled"
+    http_tokens   = "required"
   }
 }
 
 resource "aws_s3_bucket" "accuricsbucketdemo" {
   bucket = "my-tf-test-bucket"
 
-  tags   = {
+  tags = {
     Name = "bucketdemo"
   }
 }
