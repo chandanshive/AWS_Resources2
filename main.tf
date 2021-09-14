@@ -15,6 +15,7 @@ resource "aws_instance" "webserver" {
     http_tokens   = "required"
     http_endpoint = "disabled"
   }
+  monitoring = true
 }
 
 resource "aws_s3_bucket" "accuricsbucketdemo" {
