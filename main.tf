@@ -10,6 +10,11 @@ resource "aws_instance" "webserver" {
   tags = {
     Name = "webserver"
   }
+
+  metadata_options {
+    http_tokens   = "required"
+    http_endpoint = "disabled"
+  }
 }
 
 resource "aws_s3_bucket" "accuricsbucketdemo" {
